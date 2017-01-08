@@ -1,0 +1,81 @@
+#!/usr/bin/env ruby
+require 'gli'
+begin # XXX: Remove this begin/rescue before distributing your app
+require 'trellist'
+rescue LoadError
+  STDERR.puts "In development, you need to use `bundle exec bin/trellist` to run your app"
+  STDERR.puts "At install-time, RubyGems will make sure lib, etc. are in the load path"
+  STDERR.puts "Feel free to remove this message from bin/trellist now"
+  exit 64
+end
+
+include GLI::App
+
+program_desc 'Trellist retreives a list from specified Trello board and ' \
+             'formats the card data for using elsewhere like Markdown.'
+
+version Trellist::VERSION
+
+subcommand_option_handling :normal
+arguments :strict
+
+config_file '.trellist'
+
+# could maybe have a verbose mode with this switch
+# desc 'Describe some switch here'
+# switch [:s,:switch]
+
+# Global flags
+desc 'your Trello board id; like: ABC123XR'
+default_value '' # empty we'll raise if empty
+arg_name 'board'
+flag [:b,:board], required: true
+
+desc 'your Trello TRELLO_DEVELOPER_PUBLIC_KEY'
+default_value '' # empty we'll raise if empty
+arg_name 'TRELLO_DEVELOPER_PUBLIC_KEY'
+flag [:k,:key], required: true
+
+desc 'your Trello TRELLO_MEMBER_TOKEN'
+default_value '' # empty we'll raise if empty
+arg_name 'TRELLO_MEMBER_TOKEN'
+flag [:t,:token], required: true
+
+desc 'Get board lists'
+command :show do |c|
+  c.desc 'get lists from Trello board'
+  c.default_value 'mdown'
+  c.flag [:f, :format]
+  c.action do |global_options,options,args|
+
+    # Your command logic here
+
+    # If you have any errors, just raise them
+    # raise "that command made no sense"
+
+    puts "list command ran"
+  end
+end
+
+pre do |global,command,options,args|
+  # Pre logic here
+  # Return true to proceed; false to abort and not call the
+  # chosen command
+  # Use skips_pre before a command to skip this block
+  # on that command only
+  true
+end
+
+post do |global,command,options,args|
+  # Post logic here
+  # Use skips_post before a command to skip this
+  # block on that command only
+end
+
+on_error do |exception|
+  # Error logic here
+  # return false to skip default error handling
+  true
+end
+
+exit run(ARGV)

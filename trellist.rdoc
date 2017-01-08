@@ -1,0 +1,5 @@
+= trellist
+
+Generate this with
+    trellist rdoc
+After you have described your command line interface

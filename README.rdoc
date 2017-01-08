@@ -1,0 +1,6 @@
+= trellist
+
+Describe your project here
+
+:include:trellist.rdoc
+
