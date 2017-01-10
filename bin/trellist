@@ -41,19 +41,59 @@ default_value '' # empty we'll raise if empty
 arg_name 'TRELLO_MEMBER_TOKEN'
 flag [:t,:token], required: true
 
-desc 'Get board lists'
-command :show do |c|
-  c.desc 'get lists from Trello board'
+desc 'Get cards from list'
+command :cards do |c|
+  c.desc 'Gets cards from a selection of lists from the provided Trello board'
   c.default_value 'mdown'
   c.flag [:f, :format]
   c.action do |global_options,options,args|
+    puts Paint["fetching lists...", :blue]
+    @client = Client.new(key: global_options[:key],
+                         token: global_options[:token],
+                         board_id: global_options[:board])
 
-    # Your command logic here
+    @client.get_board_lists # this sets @client.lists
+    # TODO(chaserx):
+    # iterate of @client.lists printing an index and the list name
+    if @client.lists.empty?
+      raise "There were no lists for #{global_options[:board]}"
+    end
 
-    # If you have any errors, just raise them
-    # raise "that command made no sense"
+    @client.lists.each_with_index do |list, index|
+      puts "#{index}. #{list.name}"
+    end
+    # ask for which list or to quit
+    @answer = ''
+    until @answer == 'q'
+      choices = Paint["Select from 0..#{@client.lists.size - 1} or (q)uit ---> ", :blue]
+      @answer = ask(choices, String) do |response|
+        response.case = :downcase
+        response.validate = /\A\d+\w?|q\z/
+      end
 
-    puts "list command ran"
+      case @answer
+      when /\d+\w?/
+        @answer.scan(/\d+/) do |stringed_number|
+          if list=@client.lists[stringed_number.to_i]
+            puts Paint["OK. Here are the cards for #{list.name}:", :blue]
+            puts Paint["---", :blue]
+            @client.list_cards(list.id)
+            @client.generate_links
+            puts Paint["---", :blue]
+            break
+          else
+           puts Paint["Your choice, #{@answer}, is not in the list 0..#{@client.lists.size - 1}", :red]
+          end
+        end
+      when 'q'
+        puts Paint['Later.', :yellow]
+      else
+        puts Paint["Sorry. Unknown option: #{@answer.chomp}", :red]
+      end
+    end
+    # for selected list:
+    #   retreive cards from selected list
+    #   print card information in the selected format, default: markdown
   end
 end
 

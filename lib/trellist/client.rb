@@ -21,20 +21,22 @@ class Client
   using TrelloCardRefinements
   attr_accessor :lists, :cards, :board
 
-  def initialize(board_id)
-    Dotenv.load
-    Trello.configure do |config|
-      config.developer_public_key = ENV.fetch('TRELLO_DEVELOPER_PUBLIC_KEY')
-      config.member_token = ENV.fetch('TRELLO_MEMBER_TOKEN')
-    end
+  def initialize(board_id:, key:, token:)
     @board = board_id
+    @key = key
+    @token = token
+
+    Trello.configure do |config|
+      config.developer_public_key = key
+      config.member_token = token
+    end
   end
 
   def get_board_lists
     @lists = Trello::Board.find(@board).lists
-    @lists.each_with_index do |list, index|
-      puts "#{index}. #{list.name} => #{list.id}"
-    end
+    # @lists.each_with_index do |list, index|
+    #   puts "#{index}. #{list.name} => #{list.id}"
+    # end
   end
 
   def list_cards(list_id)
