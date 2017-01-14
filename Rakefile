@@ -4,6 +4,7 @@ require 'rubygems/package_task'
 require 'rdoc/task'
 require 'cucumber'
 require 'cucumber/rake/task'
+
 Rake::RDocTask.new do |rd|
   rd.main = "README.rdoc"
   rd.rdoc_files.include("README.rdoc","lib/**/*.rb","bin/**/*")
@@ -14,6 +15,7 @@ spec = eval(File.read('trellist.gemspec'))
 
 Gem::PackageTask.new(spec) do |pkg|
 end
+
 CUKE_RESULTS = 'results.html'
 CLEAN << CUKE_RESULTS
 desc 'Run features'
