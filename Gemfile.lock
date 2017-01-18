@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    trellist (0.0.1)
+    trellist (0.1.0)
       gli (= 2.14.0)
       highline (= 1.7.8)
       paint (= 2.0.0)
@@ -30,7 +30,7 @@ GEM
     builder (3.2.2)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
-    concurrent-ruby (1.0.3)
+    concurrent-ruby (1.0.4)
     contracts (0.14.0)
     cucumber (2.4.0)
       builder (>= 2.1.2)

@@ -1,13 +1,6 @@
 #!/usr/bin/env ruby
 require 'gli'
-begin # XXX: Remove this begin/rescue before distributing your app
 require 'trellist'
-rescue LoadError
-  STDERR.puts "In development, you need to use `bundle exec bin/trellist` to run your app"
-  STDERR.puts "At install-time, RubyGems will make sure lib, etc. are in the load path"
-  STDERR.puts "Feel free to remove this message from bin/trellist now"
-  exit 64
-end
 
 include GLI::App
 
@@ -52,8 +45,10 @@ command :cards do |c|
                          token: global_options[:token],
                          board_id: global_options[:board])
 
-    @client.get_board_lists # this sets @client.lists
-    # iterate of @client.lists printing an index and the list name
+    # this sets @client.lists
+    @client.get_board_lists
+
+    # iterate on @client.lists printing an index and the list name
     if @client.lists.empty?
       raise "There were no lists for #{global_options[:board]}"
     end
@@ -64,7 +59,8 @@ command :cards do |c|
     # ask for which list or to quit
     @answer = ''
     until @answer == 'q'
-      choices = Paint["Select from 0..#{@client.lists.size - 1} or (q)uit ---> ", :blue]
+      prompt = "Select from 0..#{@client.lists.size - 1} or (q)uit ---> "
+      choices = Paint[prompt, :blue]
       @answer = ask(choices, String) do |response|
         response.case = :downcase
         response.validate = /\A\d+\w?|q\z/
@@ -77,12 +73,14 @@ command :cards do |c|
             puts Paint["OK. Here are the cards for #{list.name}:", :blue]
             puts Paint["---", :blue]
             @client.list_cards(list.id)
-            # TODO(chaserx): switch on format flag option to print list differntly
+            # TODO(chaserx): switch on format flag to print list differntly
             @client.generate_links
             puts Paint["---", :blue]
             break
           else
-           puts Paint["Your choice, #{@answer}, is not in the list 0..#{@client.lists.size - 1}", :red]
+            error_prompt = "Your choice, #{@answer}," \
+                           " is not in the list 0..#{@client.lists.size - 1}"
+            puts Paint[error_prompt, :red]
           end
         end
       when 'q'
