@@ -37,8 +37,8 @@ flag [:t,:token], required: true
 desc 'Get cards from list'
 command :cards do |c|
   c.desc 'Gets cards from a selection of lists from the provided Trello board'
-  c.default_value 'mdown'
-  c.flag [:f, :format]
+  c.default_value 'markdown'
+  c.flag [:f, :format], :must_match => ["markdown","plain","html"]
   c.action do |global_options,options,args|
     puts Paint["fetching lists...", :blue]
     @client = Client.new(key: global_options[:key],
@@ -73,8 +73,7 @@ command :cards do |c|
             puts Paint["OK. Here are the cards for #{list.name}:", :blue]
             puts Paint["---", :blue]
             @client.list_cards(list.id)
-            # TODO(chaserx): switch on format flag to print list differntly
-            @client.generate_links
+            @client.generate_links(format: options[:format])
             puts Paint["---", :blue]
             break
           else
