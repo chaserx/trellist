@@ -109,13 +109,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aruba
-  rake
-  rdoc
-  rspec
+  aruba (= 0.14.2)
+  rake (= 12.0.0)
+  rdoc (= 5.0.0)
+  rspec (= 3.5.0)
   trellist!
-  vcr
-  webmock
+  vcr (= 3.0.3)
+  webmock (= 2.3.2)
 
 BUNDLED WITH
    1.13.7
