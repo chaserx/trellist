@@ -32,6 +32,3 @@ Otherwise you'll need to supply your key and token as flags such as:
 ## Contribution
 
 Pull requests welcome. Please follow the [contribution guide](contributing.md).
-
-:include:trellist.rdoc
-
