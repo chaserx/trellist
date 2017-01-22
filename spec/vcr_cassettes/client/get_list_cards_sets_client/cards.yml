@@ -1,0 +1,134 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.trello.com/1/lists/5883d2c40c15260ae897621d?key=myTRELLOkey&token=myTRELLOtoken
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin16.3.0 x86_64) ruby/2.4.0p0
+      Host:
+      - api.trello.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.871.0
+      X-Trello-Environment:
+      - Production
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1485035754340'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '122'
+      Etag:
+      - W/"7a-aa799eec"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Sat, 21 Jan 2017 21:55:54 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - dsc=e687e900e9769ac2e510fe3c10566417d69ae1e90c1ac9fb301860a171e5ae0b; Path=/;
+        Expires=Tue, 24 Jan 2017 21:55:54 GMT; Secure
+    body:
+      encoding: UTF-8
+      string: '{"id":"5883d2c40c15260ae897621d","name":"test list alpha","closed":false,"idBoard":"5883d2bb4482996b47dbe2a5","pos":65535}'
+    http_version:
+  recorded_at: Sat, 21 Jan 2017 21:55:54 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/lists/5883d2c40c15260ae897621d/cards?filter=open&key=myTRELLOkey&token=myTRELLOtoken
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin16.3.0 x86_64) ruby/2.4.0p0
+      Host:
+      - api.trello.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.871.0
+      X-Trello-Environment:
+      - Production
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1485035754641'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"H0g0jyBnypTIKYs5LKo4Tw=="
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '544'
+      Date:
+      - Sat, 21 Jan 2017 21:55:54 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - dsc=dd34eb809f1244f777fadc817acc2cd004fdf4adf012a7eca8394a3fcc9a7b6b; Path=/;
+        Expires=Tue, 24 Jan 2017 21:55:54 GMT; Secure
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA+2SW2vbMBTHv4uek9iSZcv2W5aNUZYVRreOrfRBNycishUsOWUt+e6T4jiXURiBPPShb0dH5/o/v4cXoAQoQZrniUA8x7JiFYEZz4kkhEEwAnwp+erGyfrOUSctKJtOa+/WxkqfWlFt5QgI/zen1k25Uxvl/viaKIZkHMMxgt8RLFFRYjxJMPztawppuY/YWx+po0NZJT4Y2h5HYgzjHBVFxjARTCKaghA0V9Ydx8YxhynKYirzgmQIil3MV1kz2dp748KcD4/Bd7c0rU+EwZ46R/mylo2bmY1shwlq2nRU71zHiMOevjVlUtu+YENr6ceojPEd18Z7szRN0hGwoc9cNSv/e/tpyldP8WcfwqhYBAlfwMbstIxHYKPkk2oW/bT7YffNbMcsbxU7cVVmwbrFcy/e4TR9peNzFqyQFbymDhv0IfSwUf8O8rdq7ZRpjqfs5KCFN2emXmvp5P57+5rzLEeJXXftL2QH2fen6J/6RMCdTj9a7fdZOre2ZRS5VmptJn7siEcn2r0iRvf/xAiOw3W2o3PQC0Y5iZMUQUwowkl1XdDTCUnytwA6ui7ojLYD6DCBMYHnpP/8dbuObzbf3km/nPQT7S4jfUiM0Dic51/SOc7SSlZxQkUFRSWK65KeT3BG3gLpybVJfz6QXmRZTM5J5458WRVeunfSLyb9RLvLSB8So2QczrN9/As2+3kYvggAAA==
+    http_version:
+  recorded_at: Sat, 21 Jan 2017 21:55:54 GMT
+recorded_with: VCR 3.0.3

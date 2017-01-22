@@ -1,0 +1,133 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/t3anNqoJ?key=myTRELLOkey&token=myTRELLOtoken
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin16.3.0 x86_64) ruby/2.4.0p0
+      Host:
+      - api.trello.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.871.0
+      X-Trello-Environment:
+      - Production
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1485035502121'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      X-Trello-Index-Last-Update:
+      - '10'
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '750'
+      Etag:
+      - W/"2ee-d851b2bd"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Sat, 21 Jan 2017 21:51:42 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - dsc=ffd937a3e75e1f6df5c6f45d84248cd330165c308a0129e7272c5daeac3aaf3a; Path=/;
+        Expires=Tue, 24 Jan 2017 21:51:42 GMT; Secure
+    body:
+      encoding: UTF-8
+      string: '{"id":"5883d2bb4482996b47dbe2a5","name":"testing","desc":"","descData":null,"closed":false,"idOrganization":null,"pinned":false,"url":"https://trello.com/b/t3anNqoJ/testing","shortUrl":"https://trello.com/b/t3anNqoJ","prefs":{"permissionLevel":"public","voting":"disabled","comments":"members","invitations":"members","selfJoin":false,"cardCovers":true,"cardAging":"regular","calendarFeedEnabled":false,"background":"blue","backgroundImage":null,"backgroundImageScaled":null,"backgroundTile":false,"backgroundBrightness":"dark","backgroundColor":"#0079BF","canBePublic":true,"canBeOrg":true,"canBePrivate":true,"canInvite":true},"labelNames":{"green":"","yellow":"","orange":"","red":"","purple":"","blue":"","sky":"","lime":"","pink":"","black":""}}'
+    http_version:
+  recorded_at: Sat, 21 Jan 2017 21:51:42 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/5883d2bb4482996b47dbe2a5/lists?filter=open&key=myTRELLOkey&token=myTRELLOtoken
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin16.3.0 x86_64) ruby/2.4.0p0
+      Host:
+      - api.trello.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.871.0
+      X-Trello-Environment:
+      - Production
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1485035504516'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '143'
+      Etag:
+      - W/"8f-3b826f66"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Sat, 21 Jan 2017 21:51:44 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - dsc=882e24748f2e18740c2fe63cd0f5d2f385c2ff94b1c9ec4f7d15ef4e44213eec; Path=/;
+        Expires=Tue, 24 Jan 2017 21:51:42 GMT; Secure
+    body:
+      encoding: UTF-8
+      string: '[{"id":"5883d2c40c15260ae897621d","name":"test list alpha","closed":false,"idBoard":"5883d2bb4482996b47dbe2a5","pos":65535,"subscribed":false}]'
+    http_version:
+  recorded_at: Sat, 21 Jan 2017 21:51:44 GMT
+recorded_with: VCR 3.0.3
