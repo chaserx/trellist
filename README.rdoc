@@ -3,6 +3,8 @@
 A CLI tool for getting Trello card information in various
 formats (default: markdown).
 
+![](https://travis-ci.org/chaserx/trellist.svg?branch=master)
+
 ## Usage
 
 The following [Trello API](https://developers.trello.com/) credentials are
