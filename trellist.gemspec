@@ -8,7 +8,7 @@ spec = Gem::Specification.new do |s|
   s.homepage = 'https://github.com/chaserx/trellist'
   s.platform = Gem::Platform::RUBY
   s.summary = 'Retrieve Trello lists and list cards. Capture card data in various useful formats.'
-  s.files = `git ls-files`.split("")
+  s.files = `git ls-files`.split(" ")
   s.license = 'MIT'
   s.post_install_message = "You can install config file: `trellist initconfig` \n then update your ~/.trellist with Trello credentials"
   s.require_paths << 'lib'
