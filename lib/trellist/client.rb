@@ -1,4 +1,3 @@
-require 'bundler/setup'
 require 'trello'
 
 # 1. authorize client
