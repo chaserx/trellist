@@ -9,11 +9,8 @@ require 'trello'
 # could put this module in /ext and require relative
 module TrelloCardRefinements
   refine Trello::Card do
-    # Note(chaserx): we could add a prefix and suffix here
-    # if the user wanted to make lists or bold items or whatever
-    #
-    def as_markdown
-      "[#{name}](#{short_url})"
+    def as_markdown(prefix: '', suffix: '')
+      "#{prefix}[#{name}](#{short_url})#{suffix}"
     end
 
     def as_html
@@ -45,6 +42,9 @@ class Client
     @cards = Trello::List.find(list_id).cards
   end
 
+  # TODO(chaserx): add option for image_link or some shit
+  # as in ![](https://github.trello.services/images/mini-trello-icon.png) [name](short_url)
+  #
   def generate_links(format: 'markdown')
     @cards.each do |card|
       case format
@@ -54,6 +54,8 @@ class Client
         puts card.short_url
       when 'html'
         puts card.as_html
+      when 'markdown-with-images'
+        puts card.as_markdown(prefix: '![](https://github.trello.services/images/mini-trello-icon.png) ')
       else
         puts card.inspect
       end
