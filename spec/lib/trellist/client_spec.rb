@@ -87,9 +87,9 @@ RSpec.describe 'Client' do
       end
     end
 
-    context 'format: markdown-with-images' do
+    context 'format: markdown, prefix: small trello icon' do
       it 'prints link like markdown' do
-        expect{@client.generate_links(format: 'markdown-with-images')}.
+        expect{@client.generate_links(prefix: '![](https://github.trello.services/images/mini-trello-icon.png) ')}.
           to output("![](https://github.trello.services/images/mini-trello-icon.png) [mock card title](http://example.com/foobar)\n").to_stdout
       end
     end

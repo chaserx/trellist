@@ -34,11 +34,12 @@ default_value '' # empty we'll raise if empty
 arg_name 'TRELLO_MEMBER_TOKEN'
 flag [:t,:token], required: true
 
-desc 'Get cards from list'
+desc 'Get cards from a list on your board'
 command :cards do |c|
   c.desc 'Gets cards from a selection of lists from the provided Trello board'
-  c.default_value 'markdown'
-  c.flag [:f, :format], :must_match => ["markdown", "plain", "html", "markdown-with-images"]
+  c.flag [:f, :format], must_match: ["markdown", "plain", "html", "markdown-with-logo"], default_value: 'markdown'
+  c.flag [:p, :prefix]
+  c.flag [:s, :suffix]
   c.action do |global_options,options,args|
     puts Paint["fetching lists...", :blue]
     @client = Client.new(key: global_options[:key],
@@ -56,7 +57,7 @@ command :cards do |c|
     @client.lists.each_with_index do |list, index|
       puts "#{index}. #{list.name}"
     end
-    # ask for which list or to quit
+    # ask for which list or to quitf
     @answer = ''
     until @answer == 'q'
       prompt = "Select from 0..#{@client.lists.size - 1} or (q)uit ---> "
@@ -73,7 +74,11 @@ command :cards do |c|
             puts Paint["OK. Here are the cards for #{list.name}:", :blue]
             puts Paint["---", :blue]
             @client.list_cards(list.id)
-            @client.generate_links(format: options[:format])
+            if options[:format] == 'markdown-with-logo'
+              options[:format] = 'markdown'
+              options[:prefix] += '![](https://github.trello.services/images/mini-trello-icon.png) '
+            end
+            @client.generate_links(format: options[:format], prefix: options[:prefix], suffix: options[:suffix])
             puts Paint["---", :blue]
             break
           else

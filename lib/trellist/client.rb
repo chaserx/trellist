@@ -4,17 +4,17 @@ require 'trello'
 # 2. invoke client with board id
 # 3. present list of lists to choose from
 # 4. receive choice
-# 5. output list as markdown
+# 5. output list as markdown (or other format)
 
-# could put this module in /ext and require relative
+# could put this module in trellist/ext and require relative
 module TrelloCardRefinements
   refine Trello::Card do
     def as_markdown(prefix: '', suffix: '')
       "#{prefix}[#{name}](#{short_url})#{suffix}"
     end
 
-    def as_html
-      "<a href=\"#{short_url}\">#{name}</a>"
+    def as_html(prefix: '', suffix: '')
+      "#{prefix}<a href=\"#{short_url}\">#{name}</a>#{suffix}"
     end
   end
 end
@@ -42,20 +42,15 @@ class Client
     @cards = Trello::List.find(list_id).cards
   end
 
-  # TODO(chaserx): add option for image_link or some shit
-  # as in ![](https://github.trello.services/images/mini-trello-icon.png) [name](short_url)
-  #
-  def generate_links(format: 'markdown')
+  def generate_links(format: 'markdown', prefix: '', suffix: '')
     @cards.each do |card|
       case format
       when 'markdown'
-        puts card.as_markdown
+        puts card.as_markdown(prefix: prefix, suffix: suffix)
       when 'plain'
         puts card.short_url
       when 'html'
-        puts card.as_html
-      when 'markdown-with-images'
-        puts card.as_markdown(prefix: '![](https://github.trello.services/images/mini-trello-icon.png) ')
+        puts card.as_html(prefix: prefix, suffix: suffix)
       else
         puts card.inspect
       end
