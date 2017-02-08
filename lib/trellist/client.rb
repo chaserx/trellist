@@ -38,8 +38,11 @@ class Client
     @lists = Trello::Board.find(@board).lists
   end
 
-  def list_cards(list_id)
+  def list_cards(list_id, label: nil)
     @cards = Trello::List.find(list_id).cards
+    if label
+      @cards.select! {|card| card.labels.map(&:name).include?(label) }
+    end
   end
 
   def generate_links(format: 'markdown', prefix: '', suffix: '')

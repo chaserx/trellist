@@ -45,13 +45,24 @@ RSpec.describe 'Client' do
   end
 
   describe 'get list cards' do
-    it 'sets @client.cards' do
-      @client = Client.new(board_id: 't3anNqoJ',
-                           token: 'myTRELLOtoken',
-                           key: 'myTRELLOkey')
-      @client.list_cards('5883d2c40c15260ae897621d')
-      expect(@client.cards).not_to be_nil
-      expect(@client.cards.size).to eq(3)
+    let(:client) { Client.new(board_id: 't3anNqoJ',
+                         token: 'myTRELLOkey',
+                         key: 'myTRELLOtoken') }
+
+    context 'witout a label argument' do
+      it 'sets @client.cards' do
+        client.list_cards('5883d2c40c15260ae897621d')
+        expect(client.cards).not_to be_nil
+        expect(client.cards.size).to eq(3)
+      end
+    end
+
+    context 'with a label argument' do
+      it 'sets @client.cards limited by card label' do
+        client.list_cards('5883d2c40c15260ae897621d', label: 'red')
+        expect(client.cards).not_to be_nil
+        expect(client.cards.size).to eq(1)
+      end
     end
   end
 
