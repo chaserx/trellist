@@ -40,6 +40,7 @@ command :cards do |c|
   c.flag [:f, :format], must_match: ["markdown", "plain", "html", "markdown-with-logo"], default_value: 'markdown'
   c.flag [:p, :prefix]
   c.flag [:s, :suffix]
+  c.flag [:l, :label]
   c.action do |global_options,options,args|
     puts Paint["fetching lists...", :blue]
     @client = Client.new(key: global_options[:key],
@@ -57,7 +58,7 @@ command :cards do |c|
     @client.lists.each_with_index do |list, index|
       puts "#{index}. #{list.name}"
     end
-    # ask for which list or to quitf
+    # ask for which list or to quit
     @answer = ''
     until @answer == 'q'
       prompt = "Select from 0..#{@client.lists.size - 1} or (q)uit ---> "
@@ -73,7 +74,7 @@ command :cards do |c|
           if list=@client.lists[stringed_number.to_i]
             puts Paint["OK. Here are the cards for #{list.name}:", :blue]
             puts Paint["---", :blue]
-            @client.list_cards(list.id)
+            @client.list_cards(list.id, label: options[:label] || nil)
             if options[:format] == 'markdown-with-logo'
               options[:format] = 'markdown'
               options[:prefix] += '![](https://github.trello.services/images/mini-trello-icon.png) '

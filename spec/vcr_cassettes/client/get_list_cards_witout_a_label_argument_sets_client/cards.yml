@@ -1,0 +1,196 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.trello.com/1/lists/5883d2c40c15260ae897621d?key=myTRELLOkey&token=myTRELLOtoken
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin16.3.0 x86_64) ruby/2.4.0p0
+      Host:
+      - api.trello.com
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.882.1
+      X-Trello-Environment:
+      - Production
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '11'
+      Etag:
+      - W/"b-ca7443e3"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Wed, 08 Feb 2017 18:53:48 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - dsc=d8a4bb605befa21d1140ce61e3d353f0a680cf62c501297fa243950c40f258ee; Path=/;
+        Expires=Sat, 11 Feb 2017 18:53:48 GMT; Secure
+    body:
+      encoding: UTF-8
+      string: invalid key
+    http_version:
+  recorded_at: Wed, 08 Feb 2017 18:53:58 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/lists/5883d2c40c15260ae897621d?key=myTRELLOtoken&token=myTRELLOkey
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin16.3.0 x86_64) ruby/2.4.0p0
+      Host:
+      - api.trello.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.882.1
+      X-Trello-Environment:
+      - Production
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1486580337906'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '122'
+      Etag:
+      - W/"7a-aa799eec"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Wed, 08 Feb 2017 18:58:57 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - dsc=1eeee91b2b45147cefba8a83e4756cf71e8e87172f05ae858782055496e68f31; Path=/;
+        Expires=Sat, 11 Feb 2017 18:58:57 GMT; Secure
+    body:
+      encoding: UTF-8
+      string: '{"id":"5883d2c40c15260ae897621d","name":"test list alpha","closed":false,"idBoard":"5883d2bb4482996b47dbe2a5","pos":65535}'
+    http_version:
+  recorded_at: Wed, 08 Feb 2017 18:59:08 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/lists/5883d2c40c15260ae897621d/cards?filter=open&key=myTRELLOtoken&token=myTRELLOkey
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin16.3.0 x86_64) ruby/2.4.0p0
+      Host:
+      - api.trello.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.882.1
+      X-Trello-Environment:
+      - Production
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1486580338144'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"KbzdsXKNC1kvXSMs68oI0A=="
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '622'
+      Date:
+      - Wed, 08 Feb 2017 18:58:58 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - dsc=10c162711820413138fb18fffdbf237f57868b78a3999942df5a21b5349aa17e; Path=/;
+        Expires=Sat, 11 Feb 2017 18:58:58 GMT; Secure
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA+2TXWvbMBSG/4uvk1iSP2TnruvGKMsKo1vHVnqhj+PERLaCLSe0Jf99UmwnzihshhZ60Tudo3Oko/fVc/fk5dKbe1GSBJKIJISMZxTHIqFAKcfexBMrEOsrA8WNYQZqb142Stm00jXY1oypGiaetHsLVpsLYfJtbh7smQRhOkVkipLvOJmHwRxHM0Tj3/ZMCbWwFd3qIzOsPzaXHzSrTiNxHoYJSdOYh1RyICzyXNEir81p7BAJHJEYMUhSGhMsDzVfoeBQ1bfauDnv7l3uZqUr24jd+sIYJlYFlOZSb6HqJyhY2TB1SJ0qju+0VzMOyspwd5xQgEwIRmmWAeIsCT17VckKsANmWttZNtrWx1EURBOvdhMs8nJtd68/XYj1Dn22JZzJpRP3ydvqg8po4m1z2OXlsn1H94xujLrhtahyPkhlesmb5WMr69G09qRTeOlWrstldeHe1paw41vb2BlT5RuT6/JkcgO9SnZ5qYuNAgPd9v655FlPLg+3K+td3RvSmdSGqpf27Fc+I/B//pPOhGUFUDpRtNLVIG5qJzTe33eu/KiU3V0Zs6nnvm8qUErPrEi+8AdOPSN98+9GH0/dX9hPzoFLORMUBRHBIWUkDLIXBY7gGUnQWwCOvCZwwQA4zqoeOBxgRPE5cT9/XW/Q1fbbO3GjiAtGEvfgCNgNkDsmRjA38Gocc32jT6buO/zNnAjjKIMMBUxmWGYyfVnm0lmQRG+BueA1mYvPmHs8MpfGMaLnzAlDv6xTK+o7c2OYi0cyV4EcANdGI2gbuDSOtr7RD6buI+zv/wDKyBFPVAoAAA==
+    http_version:
+  recorded_at: Wed, 08 Feb 2017 18:59:08 GMT
+recorded_with: VCR 3.0.3
