@@ -3,7 +3,7 @@
 A CLI tool for getting Trello card titles and links in various
 formats (default: markdown).
 
-![](https://travis-ci.org/chaserx/trellist.svg?branch=master)
+[![travis build](https://travis-ci.org/chaserx/trellist.svg?branch=master)](https://travis-ci.org/chaserx/trellist)
 
 ## Usage
 
