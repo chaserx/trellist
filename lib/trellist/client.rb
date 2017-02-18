@@ -40,23 +40,19 @@ class Client
 
   def list_cards(list_id, label: nil)
     @cards = Trello::List.find(list_id).cards
-    if label
-      @cards.select! {|card| card.labels.map(&:name).include?(label) }
-    end
+    @cards.select! { |card| card.labels.map(&:name).include?(label) } if label
   end
 
   def generate_links(format: 'markdown', prefix: '', suffix: '')
-    @cards.each do |card|
-      case format
-      when 'markdown'
-        puts card.as_markdown(prefix: prefix, suffix: suffix)
-      when 'plain'
-        puts card.short_url
-      when 'html'
-        puts card.as_html(prefix: prefix, suffix: suffix)
-      else
-        puts card.inspect
-      end
+    case format
+    when 'markdown'
+      @cards.map { |card| card.as_markdown(prefix: prefix, suffix: suffix) }
+    when 'plain'
+      @cards.map(&:short_url)
+    when 'html'
+      @cards.map { |card| card.as_html(prefix: prefix, suffix: suffix) }
+    else
+      @cards.map(&:inspect)
     end
   end
 end

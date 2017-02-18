@@ -4,6 +4,17 @@ require 'trellist'
 
 include GLI::App
 
+COLORS = {
+  red: '#FDAAA9',
+  blue: '#99CAF5',
+  green: '#A9D3AB',
+  yellow: '#FEE08A',
+  magenta: '#EEC5ED',
+  cyan: '#8EE8E9',
+  white: '#E4E4E4',
+  gray: '#979797'
+}.freeze
+
 program_desc 'Trellist retreives a list from specified Trello board and ' \
              'formatting the card data in Markdown or simlar for use elsewhere.'
 
@@ -42,7 +53,7 @@ command :cards do |c|
   c.flag [:s, :suffix]
   c.flag [:l, :label]
   c.action do |global_options,options,args|
-    puts Paint["fetching lists...", :blue]
+    puts Paint["fetching lists...", COLORS[:blue]]
     @client = Client.new(key: global_options[:key],
                          token: global_options[:token],
                          board_id: global_options[:board])
@@ -62,7 +73,7 @@ command :cards do |c|
     @answer = ''
     until @answer == 'q'
       prompt = "Select from 0..#{@client.lists.size - 1} or (q)uit ---> "
-      choices = Paint[prompt, :blue]
+      choices = Paint[prompt, COLORS[:blue]]
       @answer = ask(choices, String) do |response|
         response.case = :downcase
         response.validate = /\A\d+\w?|q\z/
@@ -72,15 +83,17 @@ command :cards do |c|
       when /\d+\w?/
         @answer.scan(/\d+/) do |stringed_number|
           if list=@client.lists[stringed_number.to_i]
-            puts Paint["OK. Here are the cards for #{list.name}:", :blue]
-            puts Paint["---", :blue]
+            puts Paint["OK. Here are the cards for #{list.name}:", COLORS[:cyan]]
+            puts Paint["---", COLORS[:cyan]]
             @client.list_cards(list.id, label: options[:label] || nil)
             if options[:format] == 'markdown-with-logo'
               options[:format] = 'markdown'
               options[:prefix] += '![](https://github.trello.services/images/mini-trello-icon.png) '
             end
-            @client.generate_links(format: options[:format], prefix: options[:prefix], suffix: options[:suffix])
-            puts Paint["---", :blue]
+            @client.generate_links(format: options[:format], prefix: options[:prefix], suffix: options[:suffix]).each do |link|
+              puts Paint[link, COLORS[:white]]
+            end
+            puts Paint["---", COLORS[:cyan]]
             break
           else
             error_prompt = "Your choice, #{@answer}," \
@@ -89,9 +102,9 @@ command :cards do |c|
           end
         end
       when 'q'
-        puts Paint['Later.', :yellow]
+        puts Paint['Later.', COLORS[:yellow]]
       else
-        puts Paint["Sorry. Unknown option: #{@answer.chomp}", :red]
+        puts Paint["Sorry. Unknown option: #{@answer.chomp}", COLORS[:red]]
       end
     end
   end
