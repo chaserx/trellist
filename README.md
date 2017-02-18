@@ -1,6 +1,6 @@
 # trellist
 
-A CLI tool for getting Trello card information in various
+A CLI tool for getting Trello card titles and links in various
 formats (default: markdown).
 
 ![](https://travis-ci.org/chaserx/trellist.svg?branch=master)
@@ -31,10 +31,28 @@ Otherwise you'll need to supply your key and token as flags such as:
 - `trellist cards --format=plain` **just links**
 - `trellist cards --format=html` **html**
 
+#### Link prefix and suffix
+
+You can supply optional prefix and suffix flags to alter the output. However, prefix and suffix only work for markdown and HTML formats. 
+
+example. `trellist cards --format=markdown --prefix='* '` will return
+
+`* [Card Title](https://trello.com/c/1moT1m3)`
+
+Similar with suffix. 
+
+#### Filtering cards
+
+You can filter cards by their labels. 
+
+example. `trellist cards --label='foo'`
+
 ## Development
 
 - `bundle install`
-- `bundle exec bin/trellist cards`
+- `bundle exec ./bin/trellist cards` you have to use bundle exec in development mode
+
+Run `rake -T` to view helpful build and release tasks. 
 
 ## Contribution
 

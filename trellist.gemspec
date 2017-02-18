@@ -7,7 +7,7 @@ spec = Gem::Specification.new do |s|
   s.email = 'chase.southard@gmail.com'
   s.homepage = 'https://github.com/chaserx/trellist'
   s.platform = Gem::Platform::RUBY
-  s.summary = 'Retrieve Trello lists and list cards. Capture card data in various useful formats.'
+  s.summary = 'A little CLI tool for getting Trello card titles and links in various formats.'
   s.files = `git ls-files`.split(" ")
   s.license = 'MIT'
   s.post_install_message = "You can install config file: `trellist initconfig` \n then update your ~/.trellist with Trello credentials"
@@ -22,8 +22,8 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency('rspec', '3.5.0')
   s.add_development_dependency('vcr', '3.0.3')
   s.add_development_dependency('webmock', '2.3.2')
-  s.add_runtime_dependency('gli','2.14.0')
-  s.add_runtime_dependency('ruby-trello','1.6.0')
+  s.add_runtime_dependency('gli','2.15.0')
+  s.add_runtime_dependency('ruby-trello','2.0.0')
   s.add_runtime_dependency('highline','1.7.8')
   s.add_runtime_dependency('paint','2.0.0')
 end

@@ -21,7 +21,7 @@ end
 
 class Client
   using TrelloCardRefinements
-  attr_accessor :lists, :cards, :board
+  attr_accessor :labels, :lists, :cards, :board
 
   def initialize(board_id:, key:, token:)
     @board = board_id
@@ -36,6 +36,10 @@ class Client
 
   def get_board_lists
     @lists = Trello::Board.find(@board).lists
+  end
+
+  def board_labels
+    @labels = Trello::Board.find(@board).labels
   end
 
   def list_cards(list_id, label: nil)

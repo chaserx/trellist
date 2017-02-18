@@ -2,10 +2,10 @@ PATH
   remote: .
   specs:
     trellist (0.5.1)
-      gli (= 2.14.0)
+      gli (= 2.15.0)
       highline (= 1.7.8)
       paint (= 2.0.0)
-      ruby-trello (= 1.6.0)
+      ruby-trello (= 2.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -49,13 +49,13 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     ffi (1.9.14)
     gherkin (4.0.0)
-    gli (2.14.0)
+    gli (2.15.0)
     hashdiff (0.3.2)
     highline (1.7.8)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    i18n (0.7.0)
-    json (2.0.2)
+    i18n (0.8.0)
+    json (2.0.3)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -85,7 +85,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    ruby-trello (1.6.0)
+    ruby-trello (2.0.0)
       activemodel (>= 3.2.0)
       addressable (~> 2.3)
       json

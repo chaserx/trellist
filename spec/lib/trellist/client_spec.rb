@@ -105,4 +105,18 @@ RSpec.describe 'Client' do
       end
     end
   end
+
+  describe 'board_labels' do
+    before do
+      @client = Client.new(board_id: 't3anNqoJ',
+                           key: 'myTRELLOkey',
+                           token: 'myTRELLOtoken')
+    end
+
+    it 'sets @client.labels' do
+      @client.board_labels
+      expect(@client.labels).not_to be_nil
+      expect(@client.labels.size).to eq(6)
+    end
+  end
 end

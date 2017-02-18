@@ -1,0 +1,133 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/t3anNqoJ?key=myTRELLOkey&token=myTRELLOtoken
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin16.3.0 x86_64) ruby/2.4.0p0
+      Host:
+      - api.trello.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.890.0
+      X-Trello-Environment:
+      - Production
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1487438824494'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      X-Trello-Index-Last-Update:
+      - '27'
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '781'
+      Etag:
+      - W/"30d-57bcd8"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Sat, 18 Feb 2017 17:27:04 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - dsc=db8816f1ffe788d5d172a9039b8ddaeb8ac03dc4f6cff15e35cc0efcc40ce104; Path=/;
+        Expires=Tue, 21 Feb 2017 17:27:04 GMT; Secure
+    body:
+      encoding: UTF-8
+      string: '{"id":"5883d2bb4482996b47dbe2a5","name":"testing","desc":"","descData":null,"closed":false,"idOrganization":null,"pinned":false,"url":"https://trello.com/b/t3anNqoJ/testing","shortUrl":"https://trello.com/b/t3anNqoJ","prefs":{"permissionLevel":"private","voting":"disabled","comments":"members","invitations":"members","selfJoin":false,"cardCovers":true,"cardAging":"regular","calendarFeedEnabled":false,"background":"blue","backgroundImage":null,"backgroundImageScaled":null,"backgroundTile":false,"backgroundBrightness":"dark","backgroundColor":"#0079BF","canBePublic":true,"canBeOrg":true,"canBePrivate":true,"canInvite":true},"labelNames":{"green":"green","yellow":"yellow","orange":"orange","red":"red","purple":"purple","blue":"blue","sky":"","lime":"","pink":"","black":""}}'
+    http_version:
+  recorded_at: Sat, 18 Feb 2017 17:27:03 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/5883d2bb4482996b47dbe2a5/labels?key=myTRELLOkey&limit=1000&token=myTRELLOtoken
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin16.3.0 x86_64) ruby/2.4.0p0
+      Host:
+      - api.trello.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.890.0
+      X-Trello-Environment:
+      - Production
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1487438824696'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '667'
+      Etag:
+      - W/"29b-930cd41c"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Sat, 18 Feb 2017 17:27:04 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - dsc=53d19c1895cb6159c8e5291607315f9d17c753b07e4250b37565c5037db4d723; Path=/;
+        Expires=Tue, 21 Feb 2017 17:27:04 GMT; Secure
+    body:
+      encoding: UTF-8
+      string: '[{"id":"5883d2bbced82109ffe0ba83","idBoard":"5883d2bb4482996b47dbe2a5","name":"yellow","color":"yellow","uses":1},{"id":"5883d2bbced82109ffe0ba84","idBoard":"5883d2bb4482996b47dbe2a5","name":"green","color":"green","uses":1},{"id":"5883d2bbced82109ffe0ba86","idBoard":"5883d2bb4482996b47dbe2a5","name":"red","color":"red","uses":1},{"id":"5883d2bbced82109ffe0ba85","idBoard":"5883d2bb4482996b47dbe2a5","name":"orange","color":"orange","uses":0},{"id":"5883d2bbced82109ffe0ba87","idBoard":"5883d2bb4482996b47dbe2a5","name":"blue","color":"blue","uses":0},{"id":"5883d2bbced82109ffe0ba88","idBoard":"5883d2bb4482996b47dbe2a5","name":"purple","color":"purple","uses":0}]'
+    http_version:
+  recorded_at: Sat, 18 Feb 2017 17:27:03 GMT
+recorded_with: VCR 3.0.3

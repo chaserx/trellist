@@ -30,20 +30,37 @@ config_file '.trellist'
 # switch [:s,:switch]
 
 # Global flags
-desc 'your Trello board id; like: ABC123XR'
+desc 'Your Trello board id; like: ABC123XR'
 default_value '' # empty we'll raise if empty
 arg_name 'board'
 flag [:b,:board], required: true
 
-desc 'your Trello TRELLO_DEVELOPER_PUBLIC_KEY'
+desc 'Your Trello TRELLO_DEVELOPER_PUBLIC_KEY'
 default_value '' # empty we'll raise if empty
 arg_name 'TRELLO_DEVELOPER_PUBLIC_KEY'
 flag [:k,:key], required: true
 
-desc 'your Trello TRELLO_MEMBER_TOKEN'
+desc 'Your Trello TRELLO_MEMBER_TOKEN'
 default_value '' # empty we'll raise if empty
 arg_name 'TRELLO_MEMBER_TOKEN'
 flag [:t,:token], required: true
+
+desc 'Get labels from a board'
+command :labels do |c|
+  c.desc 'Get labels from a board'
+  c.action do |global_options, options, args|
+    @client = Client.new(key: global_options[:key],
+                         token: global_options[:token],
+                         board_id: global_options[:board])
+    # set @client.labels
+    @client.board_labels
+    raise "There were no labels for #{global_options[:board]}" if @client.labels.empty?
+
+    @client.labels.each_with_index do |label, index|
+      puts Paint["#{index}. #{label.name}", COLORS[:white]]
+    end
+  end
+end
 
 desc 'Get cards from a list on your board'
 command :cards do |c|
@@ -67,7 +84,8 @@ command :cards do |c|
     end
 
     @client.lists.each_with_index do |list, index|
-      puts "#{index}. #{list.name}"
+      print Paint["#{index}. ", COLORS[:cyan]]
+      print Paint["#{list.name}\n", COLORS[:white]]
     end
     # ask for which list or to quit
     @answer = ''
