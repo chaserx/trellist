@@ -79,29 +79,29 @@ RSpec.describe 'Client' do
 
     context 'format: markdown' do
       it 'prints link in markdown' do
-        expect{@client.generate_links(format: 'markdown')}.
-          to output("[mock card title](http://example.com/foobar)\n").to_stdout
+        expect(@client.generate_links(format: 'markdown').first).
+          to eq("[mock card title](http://example.com/foobar)")
       end
     end
 
     context 'format: plain' do
       it 'prints link plainly' do
-        expect{@client.generate_links(format: 'plain')}.
-          to output("http://example.com/foobar\n").to_stdout
+        expect(@client.generate_links(format: 'plain').first).
+          to eq("http://example.com/foobar")
       end
     end
 
     context 'format: html' do
       it 'prints link like markdown' do
-        expect{@client.generate_links(format: 'html')}.
-          to output("<a href=\"http://example.com/foobar\">mock card title</a>\n").to_stdout
+        expect(@client.generate_links(format: 'html').first).
+          to eq("<a href=\"http://example.com/foobar\">mock card title</a>")
       end
     end
 
     context 'format: markdown, prefix: small trello icon' do
       it 'prints link like markdown' do
-        expect{@client.generate_links(prefix: '![](https://github.trello.services/images/mini-trello-icon.png) ')}.
-          to output("![](https://github.trello.services/images/mini-trello-icon.png) [mock card title](http://example.com/foobar)\n").to_stdout
+        expect(@client.generate_links(prefix: '![](https://github.trello.services/images/mini-trello-icon.png) ').first).
+          to eq("![](https://github.trello.services/images/mini-trello-icon.png) [mock card title](http://example.com/foobar)")
       end
     end
   end
