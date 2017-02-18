@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    trellist (0.5.1)
+    trellist (0.6.0)
       gli (= 2.15.0)
       highline (= 1.7.8)
       paint (= 2.0.0)
