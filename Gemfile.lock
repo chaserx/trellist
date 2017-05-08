@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    trellist (0.6.0)
+    trellist (0.7.0)
       gli (= 2.15.0)
       highline (= 1.7.8)
       paint (= 2.0.0)
@@ -10,9 +10,9 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (5.0.1)
-      activesupport (= 5.0.1)
-    activesupport (5.0.1)
+    activemodel (5.0.2)
+      activesupport (= 5.0.2)
+    activesupport (5.0.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
       minitest (~> 5.1)
