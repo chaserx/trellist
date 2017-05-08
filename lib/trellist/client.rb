@@ -16,6 +16,10 @@ module TrelloCardRefinements
     def as_html(prefix: '', suffix: '')
       "#{prefix}<a href=\"#{short_url}\">#{name}</a>#{suffix}"
     end
+
+    def as_plain_title(prefix: '', suffix: '')
+      "#{prefix}#{name}#{suffix}"
+    end
   end
 end
 
@@ -55,6 +59,8 @@ class Client
       @cards.map(&:short_url)
     when 'html'
       @cards.map { |card| card.as_html(prefix: prefix, suffix: suffix) }
+    when 'titles-only'
+      @cards.map { |card| card.as_plain_title(prefix: prefix, suffix: suffix) }
     else
       @cards.map(&:inspect)
     end
