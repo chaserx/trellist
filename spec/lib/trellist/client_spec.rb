@@ -91,6 +91,13 @@ RSpec.describe 'Client' do
       end
     end
 
+    context 'format: titles-only' do
+      it 'does not print links just titles' do
+        expect(@client.generate_links(format: 'titles-only').first).
+          to eq("mock card title")
+      end
+    end
+
     context 'format: html' do
       it 'prints link like markdown' do
         expect(@client.generate_links(format: 'html').first).
