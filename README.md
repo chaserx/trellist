@@ -30,7 +30,7 @@ Otherwise you'll need to supply your key and token as flags such as:
 - `trellist cards --format=markdown` **same as above**
 - `trellist cards --format=plain` **just links**
 - `trellist cards --format=html` **html**
-- `trellist cards --format=none` **titles only**
+- `trellist cards --format=titles-only` **titles only**
 
 #### Link prefix and suffix
 
