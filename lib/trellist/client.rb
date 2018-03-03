@@ -6,7 +6,7 @@ require 'trello'
 # 4. receive choice
 # 5. output list as markdown (or other format)
 
-# could put this module in trellist/ext and require relative
+# NOTE(chaserx): could put this module in trellist/ext and require relative
 module TrelloCardRefinements
   refine Trello::Card do
     def as_markdown(prefix: '', suffix: '')
@@ -19,6 +19,19 @@ module TrelloCardRefinements
 
     def as_plain_title(prefix: '', suffix: '')
       "#{prefix}#{name}#{suffix}"
+    end
+
+    def as_deckset_markdown
+      # NOTE(chaserx): I don't like this although functional. Maybe use erb?
+      "\n# #{name}\n" + # slide title; required to start slide
+      "\n#{desc}\n" + # slide body
+      "\n[#{short_url}](#{short_url})\n" + # link back to card
+      "\n#{formatted_attachments.join("\n")}\n" + # list of card attachements
+      "\n---\n" # required to end slide
+    end
+
+    def formatted_attachments
+      attachments.map { |attachment| "\n[#{attachment.name}](#{attachment.url})\n" }
     end
   end
 end
@@ -61,6 +74,8 @@ class Client
       @cards.map { |card| card.as_html(prefix: prefix, suffix: suffix) }
     when 'titles-only'
       @cards.map { |card| card.as_plain_title(prefix: prefix, suffix: suffix) }
+    when 'slides'
+      @cards.map { |card| card.as_deckset_markdown }
     else
       @cards.map(&:inspect)
     end

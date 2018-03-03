@@ -26,4 +26,5 @@ spec = Gem::Specification.new do |s|
   s.add_runtime_dependency('ruby-trello','2.0.0')
   s.add_runtime_dependency('highline','1.7.8')
   s.add_runtime_dependency('paint','2.0.0')
+  s.add_runtime_dependency('clipboard', '~> 1.1.1')
 end

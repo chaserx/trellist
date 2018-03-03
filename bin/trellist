@@ -65,10 +65,12 @@ end
 desc 'Get cards from a list on your board'
 command :cards do |c|
   c.desc 'Gets cards from a selection of lists from the provided Trello board'
-  c.flag [:f, :format], must_match: ["markdown", "plain", "html", "markdown-with-logo", "titles-only"], default_value: 'markdown'
+  c.flag [:f, :format], must_match: ["markdown", "plain", "html", "markdown-with-logo", "titles-only", "slides"], default_value: 'markdown'
   c.flag [:p, :prefix]
   c.flag [:s, :suffix]
   c.flag [:l, :label]
+
+  c.switch [:c, :clipboard], desc: 'copy output to the clipboard'
   c.action do |global_options,options,args|
     puts Paint["fetching lists...", COLORS[:blue]]
     @client = Client.new(key: global_options[:key],
@@ -103,15 +105,25 @@ command :cards do |c|
           if list=@client.lists[stringed_number.to_i]
             puts Paint["OK. Here are the cards for #{list.name}:", COLORS[:cyan]]
             puts Paint["---", COLORS[:cyan]]
+
             @client.list_cards(list.id, label: options[:label] || nil)
-            if options[:format] == 'markdown-with-logo'
-              options[:format] = 'markdown'
-              options[:prefix] += '![](https://github.trello.services/images/mini-trello-icon.png) '
+
+            if options[:format].include?('markdown-with-logo')
+               options[:format] = 'markdown'
+               options[:prefix] += '![](https://github.trello.services/images/mini-trello-icon.png) '
             end
-            @client.generate_links(format: options[:format], prefix: options[:prefix], suffix: options[:suffix]).each do |link|
-              puts Paint[link, COLORS[:white]]
+
+            card_data = @client.generate_links(format: options[:format], prefix: options[:prefix], suffix: options[:suffix])
+            card_data.each do |card|
+              puts Paint[card, COLORS[:white]]
             end
+
+            if options[:clipboard]
+              Clipboard.copy(card_data.join('\n'))
+            end
+
             puts Paint["---", COLORS[:cyan]]
+
             break
           else
             error_prompt = "Your choice, #{@answer}," \

@@ -1,5 +1,6 @@
 require 'highline/import'
 require 'paint'
+require 'clipboard'
 require 'trellist/version.rb'
 require 'trellist/client.rb'
 
